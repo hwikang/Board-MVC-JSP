@@ -1,0 +1,65 @@
+[ 3-1 ]
+1.0                                              땡  -> 6
+2.false						땡 -> true										
+3.12						땡-> 13
+4.4						땡 ->5
+5.false
+6.2
+7.5
+8.66
+9.66						땡- >'B'
+10.66						땡 -> 'B'
+11.65						땡 ->'C'
+
+
+[3-2]
+numOfApples/sizeOfBucket+1                      (numOfApples%sizeOfBucket>0)? numOfApples/sizeOfBucket+1 : numOfApples/sizeOfBucket;
+
+[3-3]
+
+(num>0)? "양수" : (num<0)? "음수 : 0
+
+[3-4]
+
+(num/100*100)
+
+[3-5]
+(num /10 * 10 +1)
+
+[3-8]
+class Exercise3_8 {
+	public static void main(String[] args) 
+	{
+		int a =10;
+		int b =20;
+		int c = a+b ;
+
+		char ch = 'A';
+		ch = (char)(ch +2);
+
+		float f = 3/2f;
+		int l = 3000 * 3000* 3000;                        > long l = 3000L*3000L*3000L    //27억 자체가 INT 범위를 넘어서서 계산후 LONG으로 바꾸면 에러남
+
+		float f2 = 0.1f;
+		float d =0.1f;
+
+		boolean result = d==f2;
+
+		System.out.println(c);
+		System.out.println(ch);
+		System.out.println(f);
+		System.out.println(l);
+		System.out.println(result);
+
+	}
+}
+
+[3-9]
+
+(48<=ch && ch<=57) || (65<=ch && ch<=90) || (97<=ch && ch<=122)
+
+[3-10]
+
+char lowerCase = ((int)ch<97)? (char)((int)ch+32) : ch;              -> (ch>='A' && ch<='Z')? (char)(ch+32) : ch;
+
+

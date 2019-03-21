@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+    <!-- jstl -->
+<c:url var="home" value="/index.do"/>
+<c:url var="regWrite" value="/register/regWrite.do"/>
+<c:url var="login" value="/register/login.do"/>
+<c:url var="logout" value="/register/logout.do"/>
+<c:url var="ctx" value="webMVC"/>
+<style>
+	ul,li{
+		margin:0px;
+		padding:0px;
+		float:left;
+		width:100%;
+		height:50%;
+		background-color:lightblue;
+	}
+	li{
+		width:16%;
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		list-style-type: none;
+		
+	}
+
+</style>
+	<ul>
+	<li><a href="${home}">홈</a></li>
+	<!-- 세션 불러오기 -->
+	<c:if test="${logStatus==null||logStatus=='N'}">	
+		<li><a href="<%=request.getContextPath()%>/register/regWrite.do">회원가입</a></li>
+		<li><a href="${login}">로그인</a></li>
+	</c:if>
+	<c:if test="${logStatus=='Y'}">	
+		<li><a href="<%=request.getContextPath()%>/register/logout.do">로그아웃</a></li>
+		<li><a href="<%=request.getContextPath()%>/register/regEdit.do">회원정보수정</a></li>
+	</c:if>
+	<li><a href="<%=request.getContextPath()%>/freeboard/list.do">게시판</a></li>
+	<li><a href="<%=request.getContextPath()%>/data/dataList.do">자료실</a></li>
+	<li style="color:red">${logid}님 하잇!</li>
+	 
+</ul>

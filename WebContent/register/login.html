@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width"; initial-scale=1 >
+<title>제목을넣으면되ㅎㅎ</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<style>
+	#logMainForm{
+		width:900px;
+		margin:0px auto;
+		
+	}
+	/* 로고 */
+	#logMainForm>div:first-child{
+		padding:3px 10px;
+		border-bottom: solid blue 3px;
+	}
+	/* sitemap */
+	#logMainForm>div:nth-child(2){
+		padding-bottom: 50px;
+	}
+	#logMainForm>div:nth-child(2)>a:hover,#logMainForm>div:nth-child(2)>a:visited,#logMainForm>div:nth-child(2)>a:link{
+		text-decoration:none;
+		color:gray;
+	}
+	/* MAIN FORM */
+	#mainForm{
+		float:left;
+		width:450px;
+		height:230px;
+		background:lightgray;
+		text-align:center;
+		padding-top:30px;
+	}
+	#logMainForm>img{
+		margin-left:25px;
+	}
+	#member>div:first-child , #nonMember>div:first-child{
+		width:350px;
+		float:left;
+	}
+	#nonMember>div{
+		margin-right:0px;
+		padding-right:0px;
+	}
+		#member>div>* , #nonMember>div>*{float:left;height:23px;margin:5px 0px;}
+		#member>div>div , #nonMember>div>div{width:30%}
+		#member>div>input,#nonMember>div>input {width: 65%; border-radius:3px; border:1px solid lightgray; background:#fff1ad;}
+	#member>input[type=submit] , #nonMember>input[type=submit]{
+		width:80px;
+		height:74px;	
+		color:#fff;
+		background:#2866e1;
+		font-size:1.2em;
+		border-radius:5px;
+		border:1px solid lightgray;
+		padding:0px;
+	} 
+	#nonMember>input[type=submit]{
+		white-space:normal;
+		font-size:1.0em;
+		/* 넘어가면 줄넘어감 */
+	}
+	
+	#member a:link, #member>a:visited{
+		text-decoration:none;
+		color:gray;
+	}
+	#member a:hover{
+		text-decoration:none;
+		color:blue;
+		text-weight:bold;
+	}
+	
+	/* 비회원 */
+	#nonMember .t1{
+		width:73px;
+		margin-right:5px;
+	}
+	
+	#b1{				/* 버튼 */
+		width:93px;
+		background:gray;
+		color:#fff;
+		font-size:10px
+	}
+	/* change */
+	#member, #nonMember{
+		display:none;
+	}
+	#mem:checked~#member{
+		display:block;
+	}
+	#nonMem:checked~#nonMember{
+		display:block;
+	}
+	
+</style>
+<script>
+	$(function(){
+		$("#logMember").click(function(){
+			if($("#userid").val()==""){
+				alert("id error");
+				return false;
+			}else if($("#userpwd").val()==""){
+				alert("pwd error");
+				return false;
+			}
+
+			$("#logFrm").attr("action","/webMVC/register/loginOk.do");
+			$("#logFrm").submit();
+		});
+		$("#logNonMember").click(function(){
+			$("#logFrm").attr("action","nonLoginOk.jsp");
+			$("#logFrm").submit();
+		});
+		$
+		
+	});
+</script>
+</head>
+<body>
+	<div id="logMainForm">
+		<!-- 로고 1-->
+		<div>
+			<img src="gmarket1.JPG">
+		</div>
+		<!-- siteMap 2-->
+		<div>
+			<a href="https://www.gmarket.com">홈</a> > 로그인
+		</div>
+		<!-- title logo 3-->
+		<div>
+			<img src="gmarket2.JPG">
+		</div>
+		<!-- Main form 4-->
+		<form method="post" action="/webMVC/register/loginOk.do/" id="logFrm">
+		<div id ="mainForm">
+		
+			<!-- radio -->
+			<input type="radio" id="mem" name="mem" checked/> 회원
+			<input type="radio" id="nonMem" name="mem"/> 비회원
+			
+			<!-- 회원폼 -->
+			
+				<div id="member" >
+				
+						<div>
+							<div class="idpwdLabel">아이디</div>
+							<input type="text" name="userid" id="userid" placeholder="아이디입력"/>
+					
+							<div class="idpwdLabel">비밀번호</div>
+							<input type="text" name="userpwd" id="userpwd" placeholder="비밀번호입력"/>
+						</div>
+						<input type="button" value="LOGIN" id="logMember"/>
+						<input type="checkbox" name="idsave" id="idsave"/>아이디저장<hr/>
+						<a href="#">아이디 찾기 |</a>
+						<a href="#">비밀번호 찾기 |</a>
+						<a href="#">회원가입</a>		
+										
+				</div>
+			
+			
+			<!-- 비회원폼 -->
+			<div id="nonMember">
+				<div>
+					<div class="idpwdLabel">주문자명</div>
+					<input type="text" name="username" id="username" placeholder="주문자 이름 입력"/>
+			
+					<div class="idpwdLabel">휴대폰번호</div>
+					<input type="text" name="tel1" id="tel1" class="t1"/> 					
+					<input type="text" name="tel2" id="tel2" class="t1"/> 
+					<input type="text" name="tel3" id="tel3" class="t1"/> 
+				
+					<div class="idpwdLabel">주문 비밀번호</div>
+					<input type="password" name="pwd" id="pwd" placeholder="주문 비밀번호 입력"/>					
+					
+				</div>
+				<input type="button" value="주문내역 조회하기" id="logNonMember"/>
+				<input type="button" value="주문비밀 번호찾기" id="b1"/>
+		
+			</div>
+		</div>
+		</form>
+		<!-- ad -->
+		<img src="gmarket3.JPG">
+		<hr/>
+	</div>
+</body>
+</html>
